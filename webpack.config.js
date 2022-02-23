@@ -33,8 +33,17 @@ module.exports = {
     module: {
         rules: [
             {
-                loader: 'ts-loader',
-                test: /\.ts$/
+                test: /\.ts$/,
+                use: 'ts-loader'
+            },
+            {
+                test: /(\.s[ac]ss)$/,
+                use: [
+                  'style-loader', // creates style nodes from JS strings
+                  'css-loader', // translates CSS into CommonJS
+                  //'postcss-loader', // 追記
+                  'sass-loader' // compiles Sass to CSS, using Node Sass by default
+                ]
             }
         ]
     }
